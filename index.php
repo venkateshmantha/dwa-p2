@@ -19,8 +19,8 @@
 </head>
 
 <body>
-
 <?php require 'data.php';
+require 'converter.php';
 ?>
 
 <div class='container'>
@@ -28,7 +28,7 @@
         <h1 class='col-centered'>Unit Converter</h1>
     </div>
     <div class='row mt-2'>
-        <div class='col-xs-4 col-centered'>
+        <div class='col-md-8 col-centered'>
             <div class='card'>
                 <div class='card-body'>
                     <!-- Nav tabs -->
@@ -51,7 +51,7 @@
                     <div class='tab-content'>
 
                         <div class='tab-pane container active' id='Length'>
-                            <form method='GET'>
+                            <form method='POST' action='converter.php'>
                                 <br>
                                 <div class='form-row'>
                                     <div class='col'>
@@ -86,41 +86,41 @@
                         </div>
 
                         <!-- Other tab panes -->
-                        <?php foreach($Units as $Unit => $Item): ?>
-                        <div class='tab-pane container fade' id='<?= $Unit ?>'>
-                            <form method='GET'>
-                                <br>
-                                <div class='form-row'>
-                                    <div class='col'>
-                                        <label>From</label>
-                                        <select name='from' class='form-control'>
-                                            <?php foreach ($Item as $Val): ?>
-                                                <option><?= $Val ?></option>
-                                            <?php endforeach ?>
-                                        </select>
+                        <?php foreach ($Units as $Unit => $Item): ?>
+                            <div class='tab-pane container fade' id='<?= $Unit ?>'>
+                                <form method='POST' action='converter.php'>
+                                    <br>
+                                    <div class='form-row'>
+                                        <div class='col'>
+                                            <label>From</label>
+                                            <select name='from' class='form-control'>
+                                                <?php foreach ($Item as $Val): ?>
+                                                    <option><?= $Val ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                        <div class='col'>
+                                            <label>To</label>
+                                            <select name='to' class='form-control'>
+                                                <?php foreach ($Item as $Val): ?>
+                                                    <option><?= $Val ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class='col'>
-                                        <label>To</label>
-                                        <select name='to' class='form-control'>
-                                            <?php foreach ($Item as $Val): ?>
-                                                <option><?= $Val ?></option>
-                                            <?php endforeach ?>
-                                        </select>
+                                    <br>
+                                    <input class='form-control' type='text' name='value' placeholder='Value to convert'>
+                                    <br>
+                                    <div class='form-check'>
+                                        <input class='form-check-input' type='checkbox' name='check'>
+                                        <label class='form-check-label'>
+                                            Round up the value
+                                        </label>
                                     </div>
-                                </div>
-                                <br>
-                                <input class='form-control' type='text' name='value' placeholder='Value to convert'>
-                                <br>
-                                <div class='form-check'>
-                                    <input class='form-check-input' type='checkbox' name='check'>
-                                    <label class='form-check-label'>
-                                        Round up the value
-                                    </label>
-                                </div>
-                                <br>
-                                <button type='submit' class='btn btn-primary'>Convert</button>
-                            </form>
-                        </div>
+                                    <br>
+                                    <button type='submit' class='btn btn-primary'>Convert</button>
+                                </form>
+                            </div>
                         <?php endforeach ?>
 
                     </div>
