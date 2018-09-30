@@ -1,7 +1,7 @@
 <?php
-require 'data.php';
-session_start();
+require 'logic.php';
 ?>
+
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -23,7 +23,6 @@ session_start();
 </head>
 
 <body>
-
 <div class='container'>
     <div class='row mt-4'>
         <h1 class='col-centered'>Unit Converter</h1>
@@ -52,7 +51,7 @@ session_start();
                     <div class='tab-content'>
 
                         <div class='tab-pane container active' id='Length'>
-                            <form method='POST' action='converter.php'>
+                            <form method='POST' action='process.php'>
                                 <br>
                                 <div class='form-row'>
                                     <div class='col'>
@@ -73,29 +72,41 @@ session_start();
                                     </div>
                                 </div>
                                 <br>
-                                <input class='form-control' type='text' name='value' placeholder='Value to convert'>
+                                <input class='form-control'
+                                       type='text'
+                                       name='value'
+                                       value='<?= $val ?? '' ?>'
+                                       placeholder='Value to convert'>
                                 <br>
-                                <div class='form-check'>
-                                    <input class='form-check-input' type='checkbox' name='check'>
-                                    <label class='form-check-label'>
-                                        Round up the value
-                                    </label>
-                                </div>
+                                <label><input type='checkbox'
+                                                            name='roundUp' <?php if ($roundUp == 'on') echo 'checked' ?> >Round up</label>
+                                <br>
                                 <br>
                                 <button type='submit' class='btn btn-primary'>Convert</button>
+                                <button name='clear' class='btn btn-primary'>Clear</button>
                             </form>
                             <br>
-                            <?php if($_SESSION['result']): ?>
-                            <div class="alert alert-primary" role="alert">
-                                <?= $_SESSION['result'] ?>
-                            </div>
+                            <?php if ($hasErrors): ?>
+                                <div class='errors alert alert-danger'>
+                                    <ul>
+                                        <?php foreach ($errors as $error): ?>
+                                            <li><?= $error ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+                            <?php if (!$hasErrors && $session != null): ?>
+                                <div class='alert alert-primary' role='alert'>
+                                    <?php echo 'Result: ' . $val . ' ' . $from . ' = ' .
+                                        $result . ' ' . $to ?>
+                                </div>
                             <?php endif; ?>
                         </div>
 
                         <!-- Other tab panes -->
                         <?php foreach ($Units as $Unit => $Item): ?>
                             <div class='tab-pane container fade' id='<?= $Unit ?>'>
-                                <form method='POST' action='converter.php'>
+                                <form method='POST' action='process.php'>
                                     <br>
                                     <div class='form-row'>
                                         <div class='col'>
@@ -116,17 +127,35 @@ session_start();
                                         </div>
                                     </div>
                                     <br>
-                                    <input class='form-control' type='text' name='value' placeholder='Value to convert'>
+                                    <input class='form-control'
+                                           type='text'
+                                           name='value'
+                                           value='<?= $val ?? '' ?>'
+                                           placeholder='Value to convert'>
                                     <br>
-                                    <div class='form-check'>
-                                        <input class='form-check-input' type='checkbox' name='check'>
-                                        <label class='form-check-label'>
-                                            Round up the value
-                                        </label>
-                                    </div>
+                                    <label class='radio'><input type='checkbox'
+                                                                name='roundUp'>Round up</label>
+                                    <br>
                                     <br>
                                     <button type='submit' class='btn btn-primary'>Convert</button>
+                                    <button name='clear' class='btn btn-primary'>Clear</button>
                                 </form>
+                                <br>
+                                <?php if ($hasErrors): ?>
+                                    <div class='errors alert alert-danger'>
+                                        <ul>
+                                            <?php foreach ($errors as $error): ?>
+                                                <li><?= $error ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                <?php endif ?>
+                                <?php if (!$hasErrors && $session != null): ?>
+                                    <div class='alert alert-primary' role='alert'>
+                                        <?php echo 'Result: ' . $val . ' ' . $from . ' = ' .
+                                            $result . ' ' . $to ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
 
@@ -134,5 +163,6 @@ session_start();
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>
