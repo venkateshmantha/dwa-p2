@@ -1,9 +1,9 @@
 <?php
 require 'data.php';
 session_start();
-$from = $_POST[from];
-$to = $_POST[to];
-$val = $_POST[value];
+$from = $_POST['from'];
+$to = $_POST['to'];
+$val = $_POST['value'];
 
 $len = $Length;
 $temp = $Units['Temperature'];

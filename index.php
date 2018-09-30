@@ -1,3 +1,7 @@
+<?php
+require 'data.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -19,9 +23,6 @@
 </head>
 
 <body>
-<?php require 'data.php';
-require 'converter.php';
-?>
 
 <div class='container'>
     <div class='row mt-4'>
@@ -59,7 +60,7 @@ require 'converter.php';
                                         <select name='from' class='form-control'>
                                             <?php foreach ($Length as $Val): ?>
                                                 <option><?= $Val ?></option>
-                                            <?php endforeach ?>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class='col'>
@@ -67,7 +68,7 @@ require 'converter.php';
                                         <select name='to' class='form-control'>
                                             <?php foreach ($Length as $Val): ?>
                                                 <option><?= $Val ?></option>
-                                            <?php endforeach ?>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -83,6 +84,12 @@ require 'converter.php';
                                 <br>
                                 <button type='submit' class='btn btn-primary'>Convert</button>
                             </form>
+                            <br>
+                            <?php if($_SESSION['result']): ?>
+                            <div class="alert alert-primary" role="alert">
+                                <?= $_SESSION['result'] ?>
+                            </div>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Other tab panes -->
@@ -96,7 +103,7 @@ require 'converter.php';
                                             <select name='from' class='form-control'>
                                                 <?php foreach ($Item as $Val): ?>
                                                     <option><?= $Val ?></option>
-                                                <?php endforeach ?>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class='col'>
@@ -104,7 +111,7 @@ require 'converter.php';
                                             <select name='to' class='form-control'>
                                                 <?php foreach ($Item as $Val): ?>
                                                     <option><?= $Val ?></option>
-                                                <?php endforeach ?>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +128,7 @@ require 'converter.php';
                                     <button type='submit' class='btn btn-primary'>Convert</button>
                                 </form>
                             </div>
-                        <?php endforeach ?>
+                        <?php endforeach; ?>
 
                     </div>
                 </div>
