@@ -4,5 +4,6 @@
 }
 
 body{
+    background-image: url("/images/abacus.jpg");
     background-color: whitesmoke !important;
 }

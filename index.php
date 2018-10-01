@@ -25,7 +25,11 @@ require 'logic.php';
 <body>
 <div class='container'>
     <div class='row mt-4'>
-        <h1 class='col-centered'>Unit Converter</h1>
+        <div class='col-md-8 col-centered'>
+            <div class='card'>
+                <h1 class='col-centered'>Unit Converter</h1>
+            </div>
+        </div>
     </div>
     <div class='row mt-2'>
         <div class='col-md-8 col-centered'>
