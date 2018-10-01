@@ -27,7 +27,7 @@ require 'logic.php';
     <div class='row mt-4'>
         <div class='col-md-8 col-centered'>
             <div class='card'>
-                <h1 class='col-centered'>Unit Converter</h1>
+                <h2 class='col-centered'>Unit Converter</h2>
             </div>
         </div>
     </div>
