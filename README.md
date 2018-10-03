@@ -3,8 +3,8 @@
 + Production URL: <http://p2.venkateshmantha.me>
 
 ## Outside resources
-*https://stackoverflow.com/questions/18153234/center-a-column-using-twitter-bootstrap*
-*https://www.w3schools.com/bootstrap4/bootstrap_navs.asp*
++ *https://stackoverflow.com/questions/18153234/center-a-column-using-twitter-bootstrap*
++ *https://www.w3schools.com/bootstrap4/bootstrap_navs.asp*
 
 ## 3 Unique inputs
 *You don't have to list all inputs, just 3 unique ones. The following is an example of what I'd put if my project was the xkcd Password Generator: (1) Text input to indicate number of words in password, (2) Checkbox to indicate whether to include a number (3) Dropdown to indicate what symbol to include*
