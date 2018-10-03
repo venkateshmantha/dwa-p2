@@ -87,5 +87,6 @@ require 'logic.php';
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
