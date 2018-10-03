@@ -4,10 +4,10 @@
 }
 
 body{
-    background-image: url("/images/abacus.jpg");
-    background-color: whitesmoke !important;
+    background-image: url("/images/abstract.jpg");
+    background-color: darkslategrey !important;
 }
 
 .card{
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,1);
 }
