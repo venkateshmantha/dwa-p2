@@ -42,7 +42,7 @@ require 'logic.php';
                                 <label>From</label>
                                 <select name='from' class='form-control'>
                                     <?php foreach ($Units as $Unit): ?>
-                                        <option><?php echo(isset($from)? $from : $Unit) ?></option>
+                                        <option <?php if (isset($from) && $from == $Unit) echo 'selected' ?>><?= $Unit ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -50,7 +50,7 @@ require 'logic.php';
                                 <label>To</label>
                                 <select name='to' class='form-control'>
                                     <?php foreach ($Units as $Unit): ?>
-                                        <option><?php echo(isset($to)? $to : $Unit) ?></option>
+                                        <option <?php if (isset($to) && $to == $Unit) echo 'selected' ?>><?= $Unit ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -63,22 +63,22 @@ require 'logic.php';
                                placeholder='Value to convert'>
                         <br>
                         <label><input type='checkbox'
-                                      name='roundUp' <?php if ($roundUp == 'on') echo 'checked' ?> >Round up</label>
+                                      name='roundUp' <?php if ($roundUp == 'on') echo 'checked' ?> > Round up</label>
                         <br>
                         <br>
-                        <button type='submit' class='btn btn-primary'>Convert</button>
-                        <button name='clear' class='btn btn-primary'>Clear</button>
+                        <button type='submit' class='btn btn-light'>Convert</button>
+                        <button name='clear' class='btn btn-dark'>Clear</button>
                     </form>
                     <br>
                     <?php if ($hasErrors): ?>
                         <div class='errors alert alert-danger'>
-                                <?php foreach ($errors as $error): ?>
-                                    <?= $error ?>
-                                <?php endforeach; ?>
+                            <?php foreach ($errors as $error): ?>
+                                <?= $error ?>
+                            <?php endforeach; ?>
                         </div>
                     <?php endif ?>
                     <?php if (!$hasErrors && $alert == 1): ?>
-                        <div class='alert alert-primary' role='alert'>
+                        <div class='alert alert-success' role='alert'>
                             <?php echo 'Result: ' . $val . ' ' . $from . ' = ' .
                                 $result . ' ' . $to ?>
                         </div>
