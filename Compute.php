@@ -4,11 +4,8 @@ namespace Converter;
 
 class Compute
 {
-    private $Units = ['Meter', 'Kilometer', 'Mile', 'Centimeter', 'Millimeter', 'Inch', 'Foot', 'Yard'];
-
     public function getResult(String $fromUnit, String $toUnit, float $value)
     {
-
         $baseUnitVal = $this->convertToMeter($fromUnit, $value);
         $convertedVal = $this->getLengthConvert($toUnit, $baseUnitVal);
 

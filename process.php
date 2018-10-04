@@ -7,10 +7,10 @@ use DWA\Form;
 
 session_start();
 
+#Compute and Form objects
 $compute = new Compute();
 $form = new Form($_POST);
 
-#var_dump($_POST);
 $fromUnit = $form->get('from');
 $toUnit = $form->get('to');
 $valToConvert = $form->get('value');
@@ -21,6 +21,7 @@ $errors = $form->validate([
     'value' => 'required|numeric'
 ]);
 
+#Calling compute module
 if (!$form->hasErrors && !isset($clear)) {
     $result = $compute->getResult($fromUnit, $toUnit, $valToConvert);
 }
@@ -28,6 +29,7 @@ if (!$form->hasErrors && !isset($clear)) {
 if ($roundUp == 'on') {
     $result = (int)$result;
 }
+
 $_SESSION['errors'] = $errors;
 $_SESSION['hasErrors'] = $form->hasErrors;
 $_SESSION['from'] = $fromUnit;
@@ -37,7 +39,6 @@ $_SESSION['roundUp'] = $roundUp;
 $_SESSION['result'] = (String)$result;
 $_SESSION['alert'] = 1;
 
-#var_dump($_SESSION);
 if (isset($clear)) {
     $_SESSION = null;
 }

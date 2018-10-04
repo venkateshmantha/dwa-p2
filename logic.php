@@ -1,6 +1,6 @@
 <?php
 
-$Units = ['Meter', 'Kilometer', 'Mile', 'Centimeter', 'Millimeter', 'Inch', 'Foot', 'Yard'];
+$units = ['Meter', 'Kilometer', 'Mile', 'Centimeter', 'Millimeter', 'Inch', 'Foot', 'Yard'];
 
 session_start();
 
